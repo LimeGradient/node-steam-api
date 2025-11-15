@@ -1,13 +1,15 @@
 import * as https from "node:https"
 
 import ISteamUserStats from "./services/ISteamUserStats"
+import ISteamUser from "./services/ISteamUser"
 
 /**
  * The main API handler for Steamworks requests
  */
 export class SteamAPIHandler {
 	apiKey: string
-	
+
+	ISteamUser: ISteamUser
 	ISteamUserStats: ISteamUserStats
 
 	constructor(apiKey: string) {
@@ -15,6 +17,7 @@ export class SteamAPIHandler {
 		
 		// Initialize handlers
 		this.ISteamUserStats = new ISteamUserStats(this.apiKey)
+		this.ISteamUser = new ISteamUser(this.apiKey)
 	}
 
 	getAPIKey(): string {

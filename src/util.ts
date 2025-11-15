@@ -32,3 +32,18 @@ export function createPromiseReturn(url: URL): Promise<string> {
 		})
 	})
 }
+
+/**
+ * Internal method used to check for valid URLs
+ */
+export function isValidURL(url: string) {
+    let _url: URL
+    try {
+        _url = new URL(url)
+    } catch (_) {
+        return false
+    }
+    _url.toString()
+
+    return true
+}
