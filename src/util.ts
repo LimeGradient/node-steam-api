@@ -47,3 +47,10 @@ export function isValidURL(url: string) {
 
     return true
 }
+
+/**
+ * Internal method used to parse bools for query params
+ */
+export function parseBool(bool: boolean): string {
+	return (bool) ? "true" : "false"
+}
