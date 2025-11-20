@@ -4,7 +4,7 @@ import * as path from "node:path"
 
 dotenv.config({path: path.resolve(__dirname, "../.env")})
 
-import { SteamAPIHandler } from "node-steam-api";
+import { SteamAPIHandler } from "node-steamworks-api";
 
 let apiHandler = new SteamAPIHandler(process.env.STEAM_API_KEY as string)
 apiHandler.IGameServersService.getAccountList().then((res) => {
