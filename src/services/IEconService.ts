@@ -31,7 +31,7 @@ export default class IEconService {
         language: string, 
         include_failed: boolean, 
         include_total: boolean
-    ) {
+    ): Promise<string> {
             const url = createSteamURL("IEconService", "GetTradeHistory", "v1", this.apiKey)
             url.searchParams.set("max_trades", max_trades.toString())
             url.searchParams.set("start_after_time", start_after_time.toString())
@@ -64,7 +64,7 @@ export default class IEconService {
         active_only: boolean, 
         historical_only: boolean,
         time_historical_cutoff: number
-    ) {
+    ): Promise<string> {
         const url = createSteamURL("IEconService", "GetTradeOffers", "v1", this.apiKey)
         url.searchParams.set("get_sent_offers", parseBool(get_sent_offers))
         url.searchParams.set("get_recieved_offers", parseBool(get_recieved_offers))
@@ -83,7 +83,7 @@ export default class IEconService {
      * @param language The language to return
      * @returns A string promise containing the data
      */
-    getTradeOffer(tradeofferid: number, language: string) {
+    getTradeOffer(tradeofferid: number, language: string): Promise<string> {
         const url = createSteamURL("IEconService", "GetTradeOffer", "v1", this.apiKey)
         url.searchParams.set("tradeofferid", tradeofferid.toString())
         url.searchParams.set("language", language)
@@ -96,7 +96,7 @@ export default class IEconService {
      * @param time_last_visit The time the user last visited. If not passed, will use the time the user last visited the trade offer page.
      * @returns A string promise containing the data
      */
-    getTradeOffersSummary(time_last_visit: number) {
+    getTradeOffersSummary(time_last_visit: number): Promise<string> {
         const url = createSteamURL("IEconService", "GetTradeOffersSummary", "v1", this.apiKey)
         url.searchParams.set("time_last_visit", time_last_visit.toString())
 
